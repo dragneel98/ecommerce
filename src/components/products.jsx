@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ShoppingCart from './shoppingCart'
+import Header from './header'
 import  products from "/src/style/products.css"
 function Products() {
   
@@ -17,9 +17,6 @@ function Products() {
 
   return (
     <div>
-      <header>
-        <ShoppingCart></ShoppingCart>
-      </header>
       <div className='product-list-container'> 
         <ul className="product-list">
           {product.map(item => (

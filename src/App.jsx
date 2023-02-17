@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import app from "./app.css"
+import Filters from './components/filters'
 import Products from './components/products'
-import {product} from './components/products'
+
 
 function App() {
   const [product] = useState(initialState)
@@ -9,12 +10,24 @@ function App() {
     category: "all",
     minPrice: "0"
   })
-  function filterProducts() {
-    
+  function filterProducts(product) {
+    return product.filter(product => {
+      return(
+        product.price >= filters.minPrice &&
+        (
+          filters.category === "all" ||
+          product.category === filters.category
+        )
+      )
+    })
   }
+
+  const filteredProducts = filterProducts(product)
+
   return (
     <div className="App">
-     <Products></Products>
+     <Header></Header>
+     <Products product={filteredProducts}></Products>
     </div>
   )
 }
