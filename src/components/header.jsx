@@ -4,7 +4,7 @@ import Filters from './filters'
 function Header() {
 
   return (
-    <div>
+    <div className='header'>
         <Filters></Filters>
     </div>
   )

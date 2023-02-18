@@ -1,4 +1,8 @@
-
+.product-list-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .product-list{
     margin: 1rem 1rem;
     list-style: none;

@@ -1,33 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import Header from './header'
-import  products from "/src/style/products.css"
-function Products() {
-  
-  const [product, setProduct] = useState([])
+import React, { useContext, useEffect, useState } from 'react'
+import ProductContext from './context/productsContext'
+import "/src/style/products.css"
 
-  useEffect(() => {
-    productsRequest()
-  }, [])
+function Products({product}) {
   
-  async function productsRequest () {
-    const response = await fetch('https://fakestoreapi.com/products')
-    const data = await response.json()
-    setProduct(data)
-}
+  console.log(product);
 
   return (
     <div>
       <div className='product-list-container'> 
         <ul className="product-list">
-          {product.map(item => (
-            <li key={item.id} className="card"> 
+          {product.map(product => (
+            <li key={product.id} className="card"> 
                 <div className='product-header'>
-                <h2 className='product-title'> {item.title} </h2> </div>
+                <h2 className='product-title'> {product.title} </h2> </div>
                 <div className='img-container'>
-                  <img src={item.image} alt="product img" className='product-img'></img>
+                  <img src={product.image} alt="product img" className='product-img'></img>
                 </div>
-                <p className='product-price'> ${item.price} </p>
-                <p> {item.category} </p>
+                <p className='product-price'> ${product.price} </p>
+                <p> {product.category} </p>
                 <button>carrito</button>
               
             </li>
