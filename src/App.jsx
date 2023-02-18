@@ -4,10 +4,7 @@ import ProductContext from './components/context/productsContext'
 import Header from './components/header'
 import Products from './components/products'
 
-
-function App() {
-
-  const {product} = useContext(ProductContext)
+function useFilters() {
   
   const [filters, setFilters] = useState({
     category: "all",
@@ -24,13 +21,19 @@ function App() {
       )
     })
   }
+  return {filterProducts, setFilters}
+}
 
+
+function App() {
+  const {product} = useContext(ProductContext)
+  const { filterProducts, setFilters} = useFilters()
   const filteredProducts = filterProducts(product)
 
   return ( 
     
       <div className="App">
-        <Header></Header>
+        <Header changeFilters={setFilters}></Header>
         <Products product={filteredProducts}></Products>
       </div>
      
